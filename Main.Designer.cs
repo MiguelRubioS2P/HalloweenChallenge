@@ -280,9 +280,8 @@
             this.labelTag.ForeColor = System.Drawing.Color.White;
             this.labelTag.Location = new System.Drawing.Point(151, 46);
             this.labelTag.Name = "labelTag";
-            this.labelTag.Size = new System.Drawing.Size(35, 13);
+            this.labelTag.Size = new System.Drawing.Size(0, 13);
             this.labelTag.TabIndex = 2;
-            this.labelTag.Text = "label1";
             // 
             // MainSakila
             // 

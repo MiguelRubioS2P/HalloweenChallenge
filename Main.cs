@@ -96,6 +96,8 @@ namespace HalloweenChallenge
                     buttonLogIn.Visible = false;
                     buttonLogOut.Visible = true;
                     staff = false;
+                    tabControlMain.SelectedIndex = 1;
+                    labelTag.Visible = false;
                 }
                 else
                 {
@@ -122,7 +124,9 @@ namespace HalloweenChallenge
                     buttonLogIn.Visible = false;
                     buttonLogOut.Visible = true;
                     staff = true;
+                    labelTag.Visible = true;
                     labelTag.Text = "Mr." + userStaff;
+                    tabControlMain.SelectedIndex = 1;
 
                 }
                 else
@@ -146,11 +150,13 @@ namespace HalloweenChallenge
             textBoxPassword.Enabled = true;
             enabledComponents(false);
             pictureBoxNoLogin.Visible = true;
-            
+            labelTag.Visible = false;
+
 
         }
 
         private void MainSakila_Load(object sender, EventArgs e)
+
         {
             enabledComponents(false);
         }
@@ -165,7 +171,8 @@ namespace HalloweenChallenge
                 labelFounds.Enabled = false;
                 checkBoxMWW.Enabled = false;
                 listBoxFilms.Enabled = false;
-                labelTag.Enabled = false;
+                
+
             }
             else
             {
@@ -175,7 +182,7 @@ namespace HalloweenChallenge
                 labelFounds.Enabled = true;
                 checkBoxMWW.Enabled = true;
                 listBoxFilms.Enabled = true;
-                labelTag.Enabled = true;
+                
             }
         }
 
