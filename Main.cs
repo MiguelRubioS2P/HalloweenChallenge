@@ -18,6 +18,7 @@ namespace HalloweenChallenge
         private const string connectionStringClient = "Server=localhost;Database=sakila;Uid=client;Pwd=$3cr3t3t";
         private const string connectionStringStaff = "Server=localhost;Database=sakila;Uid=staff;Pwd=$up3r$3cr3t";
         bool staff;
+        string userStaff;
         public MainSakila()
         {
             InitializeComponent();
@@ -107,8 +108,9 @@ namespace HalloweenChallenge
             {
                 //£456
                 MySqlConnection connection = new MySqlConnection(connectionStringStaff);
-                string sql = $"select first_name from staff where first_name like '{textBoxUser.Text}'";
+                string sql = $"select username from staff where first_name like '{textBoxUser.Text}'";
                 string user = connection.Query<string>(sql).FirstOrDefault();
+                userStaff = user;
 
                 if (textBoxUser.Text == user && textBoxPassword.Text == "£456")
                 {
@@ -179,8 +181,37 @@ namespace HalloweenChallenge
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
+            //userStaff have value username connect
             //UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;
             MySqlConnection connection = new MySqlConnection(connectionStringStaff);
+            string sql = $"Update staff set email = '{textBoxEmail.Text}' where username like '{userStaff}'";
+
+            try
+            {
+
+                var rowsAffected = connection.Execute(sql);
+
+                if (rowsAffected == 1)
+                {
+                    
+                    MessageBox.Show("Update correctly", "User Manager", MessageBoxButtons.OK);
+
+                    textBoxEmail.Text = string.Empty;
+
+                }
+
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+
+                Console.WriteLine("Warning: Exception thrown " + ex.Message);
+                MessageBox.Show("Fail update", "User Manager", MessageBoxButtons.OK);
+                textBoxEmail.Text = string.Empty;
+
+            }
+
+
+            connection.Close();
         }
     }
 }
