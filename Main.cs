@@ -132,10 +132,6 @@ namespace HalloweenChallenge
                 }
             }
 
-            
-            
-            
-            
 
         }
 
@@ -212,6 +208,18 @@ namespace HalloweenChallenge
 
 
             connection.Close();
+        }
+
+        private void listBoxFilms_DoubleClick(object sender, EventArgs e)
+        {
+            
+            Film selectedFilm = listBoxFilms.SelectedItem as Film;
+
+            FilmDetails modal = new FilmDetails(selectedFilm);
+
+            DialogResult result = modal.ShowDialog(this);
+
+            modal.Dispose();
         }
     }
 }

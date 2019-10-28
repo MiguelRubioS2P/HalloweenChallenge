@@ -222,6 +222,7 @@
             this.listBoxFilms.Name = "listBoxFilms";
             this.listBoxFilms.Size = new System.Drawing.Size(476, 238);
             this.listBoxFilms.TabIndex = 5;
+            this.listBoxFilms.DoubleClick += new System.EventHandler(this.listBoxFilms_DoubleClick);
             // 
             // labelEmail
             // 

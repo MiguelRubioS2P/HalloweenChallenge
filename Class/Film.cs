@@ -10,6 +10,10 @@ namespace HalloweenChallenge.Class
     {
 
         public string title { get; set; }
+        public string description { get; set; }
+        public string rating { get; set; }
+        public int language_id { get; set; }
+        public string length { get; set; }
 
     }
 }
