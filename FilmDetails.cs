@@ -26,6 +26,15 @@ namespace HalloweenChallenge
             labelDescriptionL.Text = _selectedFilm.description;
             labelTime.Text = _selectedFilm.length;
             labelAge.Text = _selectedFilm.rating;
+            if(labelAge.Text == "NC-17" || labelAge.Text == "R")
+            {
+                labelAge.ForeColor = Color.Red;
+            }
+            else
+            {
+                labelAge.ForeColor = Color.DarkGray;
+            }
+            
         }
 
     }

@@ -50,6 +50,7 @@
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.pictureBoxNoLogin = new System.Windows.Forms.PictureBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
+            this.labelTag = new System.Windows.Forms.Label();
             this.tabControlMain.SuspendLayout();
             this.tabPageLogin.SuspendLayout();
             this.tabPageFilms.SuspendLayout();
@@ -64,7 +65,7 @@
             this.labelTitulo.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.labelTitulo.Location = new System.Drawing.Point(-1, -1);
             this.labelTitulo.Name = "labelTitulo";
-            this.labelTitulo.Size = new System.Drawing.Size(801, 63);
+            this.labelTitulo.Size = new System.Drawing.Size(801, 67);
             this.labelTitulo.TabIndex = 0;
             this.labelTitulo.Text = "SAKILA FILMS";
             this.labelTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -272,11 +273,23 @@
             this.buttonLogOut.Visible = false;
             this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
+            // labelTag
+            // 
+            this.labelTag.AutoSize = true;
+            this.labelTag.BackColor = System.Drawing.Color.DodgerBlue;
+            this.labelTag.ForeColor = System.Drawing.Color.White;
+            this.labelTag.Location = new System.Drawing.Point(151, 46);
+            this.labelTag.Name = "labelTag";
+            this.labelTag.Size = new System.Drawing.Size(35, 13);
+            this.labelTag.TabIndex = 2;
+            this.labelTag.Text = "label1";
+            // 
             // MainSakila
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelTag);
             this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.labelTitulo);
             this.Name = "MainSakila";
@@ -291,6 +304,7 @@
             this.tabPageStaff.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNoLogin)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -317,6 +331,7 @@
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.Button buttonLogOut;
+        private System.Windows.Forms.Label labelTag;
     }
 }
 

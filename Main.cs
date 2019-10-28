@@ -44,7 +44,7 @@ namespace HalloweenChallenge
                 {
                     List<Film> films = new List<Film>();
                     MySqlConnection connection = new MySqlConnection(connectionStringStaff);
-                    string sql = $"select * from film where title like '{textBoxSearch.Text}'";
+                    string sql = $"select * from film where title like '{textBoxSearch.Text}%' or title like '%{textBoxSearch.Text}'";
                     films = connection.Query<Film>(sql).ToList();
                     listBoxFilms.DataSource = films;
                     listBoxFilms.DisplayMember = "title";
@@ -69,7 +69,7 @@ namespace HalloweenChallenge
                 {
                     List<Film> films = new List<Film>();
                     MySqlConnection connection = new MySqlConnection(connectionStringClient);
-                    string sql = $"select * from film where title like '{textBoxSearch.Text}'";
+                    string sql = $"select * from film where title like '{textBoxSearch.Text}%' or title like '%{textBoxSearch.Text}'";
                     films = connection.Query<Film>(sql).ToList();
                     listBoxFilms.DataSource = films;
                     listBoxFilms.DisplayMember = "title";
@@ -122,6 +122,7 @@ namespace HalloweenChallenge
                     buttonLogIn.Visible = false;
                     buttonLogOut.Visible = true;
                     staff = true;
+                    labelTag.Text = "Mr." + userStaff;
 
                 }
                 else
@@ -145,6 +146,7 @@ namespace HalloweenChallenge
             textBoxPassword.Enabled = true;
             enabledComponents(false);
             pictureBoxNoLogin.Visible = true;
+            
 
         }
 
@@ -163,6 +165,7 @@ namespace HalloweenChallenge
                 labelFounds.Enabled = false;
                 checkBoxMWW.Enabled = false;
                 listBoxFilms.Enabled = false;
+                labelTag.Enabled = false;
             }
             else
             {
@@ -172,6 +175,7 @@ namespace HalloweenChallenge
                 labelFounds.Enabled = true;
                 checkBoxMWW.Enabled = true;
                 listBoxFilms.Enabled = true;
+                labelTag.Enabled = true;
             }
         }
 
