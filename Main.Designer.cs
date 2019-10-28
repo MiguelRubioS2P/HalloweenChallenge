@@ -247,13 +247,14 @@
             this.buttonUpdate.TabIndex = 2;
             this.buttonUpdate.Text = "Update";
             this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // pictureBoxNoLogin
             // 
             this.pictureBoxNoLogin.BackColor = System.Drawing.Color.Turquoise;
             this.pictureBoxNoLogin.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNoLogin.Image")));
             this.pictureBoxNoLogin.InitialImage = null;
-            this.pictureBoxNoLogin.Location = new System.Drawing.Point(149, 35);
+            this.pictureBoxNoLogin.Location = new System.Drawing.Point(147, 19);
             this.pictureBoxNoLogin.Name = "pictureBoxNoLogin";
             this.pictureBoxNoLogin.Size = new System.Drawing.Size(414, 307);
             this.pictureBoxNoLogin.TabIndex = 3;

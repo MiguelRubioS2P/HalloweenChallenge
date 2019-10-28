@@ -17,6 +17,7 @@ namespace HalloweenChallenge
     {
         private const string connectionStringClient = "Server=localhost;Database=sakila;Uid=client;Pwd=$3cr3t3t";
         private const string connectionStringStaff = "Server=localhost;Database=sakila;Uid=staff;Pwd=$up3r$3cr3t";
+        bool staff;
         public MainSakila()
         {
             InitializeComponent();
@@ -25,13 +26,56 @@ namespace HalloweenChallenge
         private void buttonFind_Click(object sender, EventArgs e)
         {
 
-            List<Film> films = new List<Film>();
-            MySqlConnection connection = new MySqlConnection(connectionStringStaff);
-            string sql = $"select * from film where title like '%{textBoxSearch.Text}%'";
-            films = connection.Query<Film>(sql).ToList();
-            listBoxFilms.DataSource = films;
-            listBoxFilms.DisplayMember = "title";
-            connection.Close();
+            if (staff)
+            {
+                if (!checkBoxMWW.Checked)
+                {
+                    List<Film> films = new List<Film>();
+                    MySqlConnection connection = new MySqlConnection(connectionStringStaff);
+                    string sql = $"select * from film where title like '%{textBoxSearch.Text}%'";
+                    films = connection.Query<Film>(sql).ToList();
+                    listBoxFilms.DataSource = films;
+                    listBoxFilms.DisplayMember = "title";
+                    labelFounds.Text = films.Count + " records founds";
+                    connection.Close();
+                }
+                else
+                {
+                    List<Film> films = new List<Film>();
+                    MySqlConnection connection = new MySqlConnection(connectionStringStaff);
+                    string sql = $"select * from film where title like '{textBoxSearch.Text}'";
+                    films = connection.Query<Film>(sql).ToList();
+                    listBoxFilms.DataSource = films;
+                    listBoxFilms.DisplayMember = "title";
+                    labelFounds.Text = films.Count + " records founds";
+                    connection.Close();
+                }
+            }
+            else
+            {
+                if (!checkBoxMWW.Checked)
+                {
+                    List<Film> films = new List<Film>();
+                    MySqlConnection connection = new MySqlConnection(connectionStringClient);
+                    string sql = $"select * from film where title like '%{textBoxSearch.Text}%'";
+                    films = connection.Query<Film>(sql).ToList();
+                    listBoxFilms.DataSource = films;
+                    listBoxFilms.DisplayMember = "title";
+                    labelFounds.Text = films.Count + " records founds";
+                    connection.Close();
+                }
+                else
+                {
+                    List<Film> films = new List<Film>();
+                    MySqlConnection connection = new MySqlConnection(connectionStringClient);
+                    string sql = $"select * from film where title like '{textBoxSearch.Text}'";
+                    films = connection.Query<Film>(sql).ToList();
+                    listBoxFilms.DataSource = films;
+                    listBoxFilms.DisplayMember = "title";
+                    labelFounds.Text = films.Count + " records founds";
+                    connection.Close();
+                }
+            }
 
         }
 
@@ -39,25 +83,70 @@ namespace HalloweenChallenge
         {
             //textBoxUser
             //textBoxPassword
-            if(textBoxUser.Text == "guest" && textBoxPassword.Text == "£123")
+
+            if(textBoxUser.Text == "guest")
             {
-                pictureBoxNoLogin.Visible = true;
-                enabledComponents(true);
-                textBoxUser.Enabled = false;
-                textBoxPassword.Enabled = false;
-                buttonLogIn.Visible = false;
-                buttonLogOut.Visible = true;
+                if (textBoxUser.Text == "guest" && textBoxPassword.Text == "£123")
+                {
+                    pictureBoxNoLogin.Visible = true;
+                    enabledComponents(true);
+                    textBoxUser.Enabled = false;
+                    textBoxPassword.Enabled = false;
+                    buttonLogIn.Visible = false;
+                    buttonLogOut.Visible = true;
+                    staff = false;
+                }
+                else
+                {
+                    MessageBox.Show("Fail client", "User Manager", MessageBoxButtons.OK);
+                    textBoxUser.Text = string.Empty;
+                    textBoxPassword.Text = string.Empty;
+                }
             }
             else
             {
-                MessageBox.Show("Fail", "User Manager", MessageBoxButtons.OK);
+                //£456
+                MySqlConnection connection = new MySqlConnection(connectionStringStaff);
+                string sql = $"select first_name from staff where first_name like '{textBoxUser.Text}'";
+                string user = connection.Query<string>(sql).FirstOrDefault();
 
+                if (textBoxUser.Text == user && textBoxPassword.Text == "£456")
+                {
+
+                    pictureBoxNoLogin.Visible = false;
+                    enabledComponents(true);
+                    textBoxUser.Enabled = false;
+                    textBoxPassword.Enabled = false;
+                    buttonLogIn.Visible = false;
+                    buttonLogOut.Visible = true;
+                    staff = true;
+
+                }
+                else
+                {
+                    MessageBox.Show("Fail staff", "User Manager", MessageBoxButtons.OK);
+                    textBoxUser.Text = string.Empty;
+                    textBoxPassword.Text = string.Empty;
+                }
             }
+
+            
+            
+            
+            
 
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
+            textBoxUser.Text = string.Empty;
+            textBoxPassword.Text = string.Empty;
+            buttonLogOut.Visible = false;
+            buttonLogIn.Visible = true;
+            textBoxUser.Enabled = true;
+            textBoxPassword.Enabled = true;
+            enabledComponents(false);
+            pictureBoxNoLogin.Visible = true;
 
         }
 
@@ -86,6 +175,12 @@ namespace HalloweenChallenge
                 checkBoxMWW.Enabled = true;
                 listBoxFilms.Enabled = true;
             }
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            //UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;
+            MySqlConnection connection = new MySqlConnection(connectionStringStaff);
         }
     }
 }
