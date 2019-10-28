@@ -71,6 +71,8 @@
             // 
             // labelTitleDetails
             // 
+            this.labelTitleDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitleDetails.ForeColor = System.Drawing.Color.DodgerBlue;
             this.labelTitleDetails.Location = new System.Drawing.Point(137, 40);
             this.labelTitleDetails.Name = "labelTitleDetails";
             this.labelTitleDetails.Size = new System.Drawing.Size(309, 23);
@@ -79,23 +81,23 @@
             // 
             // labelType
             // 
-            this.labelType.AutoSize = true;
             this.labelType.BackColor = System.Drawing.Color.Blue;
+            this.labelType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelType.ForeColor = System.Drawing.Color.White;
             this.labelType.Location = new System.Drawing.Point(140, 110);
             this.labelType.Name = "labelType";
-            this.labelType.Size = new System.Drawing.Size(53, 13);
+            this.labelType.Size = new System.Drawing.Size(98, 27);
             this.labelType.TabIndex = 4;
             this.labelType.Text = "Animation";
             // 
             // labelLanguage
             // 
-            this.labelLanguage.AutoSize = true;
             this.labelLanguage.BackColor = System.Drawing.Color.Blue;
+            this.labelLanguage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLanguage.ForeColor = System.Drawing.Color.White;
             this.labelLanguage.Location = new System.Drawing.Point(358, 109);
             this.labelLanguage.Name = "labelLanguage";
-            this.labelLanguage.Size = new System.Drawing.Size(41, 13);
+            this.labelLanguage.Size = new System.Drawing.Size(88, 28);
             this.labelLanguage.TabIndex = 5;
             this.labelLanguage.Text = "English";
             // 
@@ -110,6 +112,7 @@
             // 
             // labelDescriptionL
             // 
+            this.labelDescriptionL.ForeColor = System.Drawing.Color.LightSlateGray;
             this.labelDescriptionL.Location = new System.Drawing.Point(140, 251);
             this.labelDescriptionL.Name = "labelDescriptionL";
             this.labelDescriptionL.Size = new System.Drawing.Size(408, 65);
